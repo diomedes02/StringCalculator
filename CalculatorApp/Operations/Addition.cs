@@ -7,7 +7,7 @@ namespace CalculatorApp.Operations
         public override int PerformOperation(string opParams)
         {
             int result = 0;
-            string[] addends = opParams.Split(',');
+            string[] addends = opParams.Split(new char[]{',', '\n'});
             
             // clear previous results from log
             ClearLog();

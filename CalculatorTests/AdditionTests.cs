@@ -12,11 +12,11 @@ namespace StringCalculator.CalculatorUnitTests
         [DataRow("-3,10",7)]
         [DataRow("3,-10",-7)]
         [DataRow("0,1,xyz,3",4)]
-        [DataRow("zxy, -1, 3n, 4",3)]
-        [DataRow("0,0,xxx",0)]
+        [DataRow("zxy, -1\n 3n, 4",3)]
+        [DataRow("0,0\nxxx",0)]
         [DataRow(",",0)]
-        [DataRow(",0,3,2",5)]
-        [DataRow("0,0,3,,,,1,,,-2",2)]
+        [DataRow(",0,3\n2",5)]
+        [DataRow("0,0,3,\n1\n,1,,,-2",3)]
         [DataRow("*,/,\\,xxx,9,2",11)]
         public void TestAddition(string addends, int expectedResult)
         {
