@@ -15,7 +15,7 @@ namespace StringCalculator.CalculatorUnitTests
         [DataRow("zxy, -1, 3n, 4",-1)]
         [DataRow("0,0,xxx",0)]
         [DataRow("2,,,0,xxx",2)]
-        [DataRow(",",2)]
+        [DataRow(",",0)]
         public void TestAddition(string addends, int expectedResult)
         {
             Calculator calc = new Calculator();
