@@ -18,10 +18,6 @@ namespace CalculatorApp.Operations
 
                 foreach(string ad in addends)
                 {
-                    // Support a maximum of 2 numbers
-                    if(cnt > 1)
-                        break;
-
                     if(cnt > 0)
                         OpLog.Append("+");
 
