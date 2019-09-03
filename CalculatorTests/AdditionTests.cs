@@ -17,6 +17,10 @@ namespace StringCalculator.CalculatorUnitTests
         [DataRow(",0,3\n2",5)]
         [DataRow("0,0,3,\n1\n,1,,,2",7)]
         [DataRow("*,/,\\,xxx,9,2",11)]
+        [DataRow("2,3,1000",5)]
+        [DataRow("2,3,999",1004)]
+        [DataRow("2,3,1001",5)]
+        [DataRow("2,3,156001",5)]
         public void TestAddition(string addends, int expectedResult)
         {
             Calculator calc = new Calculator();

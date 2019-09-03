@@ -36,8 +36,11 @@ namespace CalculatorApp.Operations
                             sbNegNum.Append(adInt);
                             foundNegNum = true;
                         }
-                        else  // add to result
+                        else if (adInt < 1000)
+                        {
+                            // add to result
                             result += adInt;
+                        }
 
                         OpLog.Append($"{adInt}");
                     }
