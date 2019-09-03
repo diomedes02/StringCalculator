@@ -26,8 +26,13 @@ namespace StringCalculator.CalculatorUnitTests
         [DataRow("//a\n,4a2af3",6)]
         [DataRow("//3\n,43233f35",11)]
         [DataRow("//\n1,2,3",6)]
+        [DataRow("//[***]\n1***2,3******,\n\n5***1",12)]
+        [DataRow("//[----]\n1,3----,\n----5,1",10)]
+        [DataRow("//[h]\n1,3h1h,2\n5,1",13)]
         public void TestAddition(string addends, int expectedResult)
         {
+            Console.WriteLine($"TestAddition. Input string parameter: {addends}");
+
             Calculator calc = new Calculator();
             int actualResult = calc.Add(addends);
 
