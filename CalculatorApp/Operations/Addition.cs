@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace CalculatorApp.Operations
 {
@@ -15,6 +16,8 @@ namespace CalculatorApp.Operations
             if (addends != null && addends.Length > 1)
             {
                 int cnt = 0;
+                bool foundNegNum = false;
+                StringBuilder sbNegNum = new StringBuilder();
 
                 foreach(string ad in addends)
                 {
@@ -23,13 +26,31 @@ namespace CalculatorApp.Operations
 
                     if(Int32.TryParse(ad, out int adInt))
                     {
-                        result += adInt;
+                        // check for negative number
+                        if(adInt < 0)
+                        {
+                            // save the negative number for printing in the exception
+                            if(sbNegNum.Length > 0)
+                                sbNegNum.Append(",");
+
+                            sbNegNum.Append(adInt);
+                            foundNegNum = true;
+                        }
+                        else  // add to result
+                            result += adInt;
+
                         OpLog.Append($"{adInt}");
                     }
                     else
                         OpLog.Append("0");
 
                     cnt++;
+                }
+
+                if (foundNegNum)
+                {
+                    OpLog.Append("Negative values found: " + sbNegNum);
+                    throw new ArgumentOutOfRangeException("Negative values are not allowed!");
                 }
 
                 OpLog.Append($" = {result}");
