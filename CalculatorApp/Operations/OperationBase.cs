@@ -22,6 +22,7 @@ namespace CalculatorApp.Operations
             OpLog.Clear();
         }
 
-        public abstract int PerformOperation(string opParams);
+        public abstract int PerformOperation(string opParams, char[] delimeters);
+
     }
 }

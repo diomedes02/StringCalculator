@@ -5,10 +5,10 @@ namespace CalculatorApp.Operations
 {
     public class Addition : OperationBase
     {
-        public override int PerformOperation(string opParams)
+        public override int PerformOperation(string opParams, char[] delimeters)
         {
             int result = 0;
-            string[] addends = opParams.Split(new char[]{',', '\n'});
+            string[] addends = opParams.Split(delimeters);
             
             // clear previous results from log
             ClearLog();
@@ -63,6 +63,5 @@ namespace CalculatorApp.Operations
 
             return result;
         }
-
     }
 }
