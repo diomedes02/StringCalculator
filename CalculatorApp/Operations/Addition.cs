@@ -5,10 +5,10 @@ namespace CalculatorApp.Operations
 {
     public class Addition : OperationBase
     {
-        public override int PerformOperation(string opParams, char[] delimeters)
+        public override int PerformOperation(string opParams)
         {
             int result = 0;
-            string[] addends = opParams.Split(delimeters);
+            string[] addends = opParams.Split(',');
             
             // clear previous results from log
             ClearLog();
@@ -36,7 +36,7 @@ namespace CalculatorApp.Operations
                             sbNegNum.Append(adInt);
                             foundNegNum = true;
                         }
-                        else if (adInt < 1000)
+                        else if (adInt < 1000) // restriction added to ignore numbers >= 1000
                         {
                             // add to result
                             result += adInt;
