@@ -47,14 +47,10 @@ namespace CalculatorApp
 
                         string multiCharDelimeter = mixedParams.Substring(lastOpenBraceIndex + 1, lastClosedBraceIndex - lastOpenBraceIndex - 1);
 
-                        Console.WriteLine($"Parsed multiCharDelimeter: {multiCharDelimeter}");
-
                         if (multiCharDelimeter.Length > 0)
                         {
                             // find all occurrences of the multi-char delimiter in the operator's parameter and replace with a comma (the default delimeter)
                             opParams = opParams.Replace(multiCharDelimeter, ",");
-
-                            Console.WriteLine($"Scrubbed opParams after replace: {opParams}");
                         }
                     }
                 }
