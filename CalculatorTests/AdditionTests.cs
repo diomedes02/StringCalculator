@@ -34,35 +34,19 @@ namespace StringCalculator.CalculatorUnitTests
         [DataRow("//[h][][***]\n1,3***1h,2\n5,1",13)]
         [DataRow("//[*][!!][rrr]\n11rrr22*33!!44",110)]
         [DataRow("//[][!$$!][rrr]\n11rrr22\n33!$$!44",110)]
-        public void TestAddition(string addends, int expectedResult)
+        public void TestAddition(string opValues, int expectedResult)
         {
-            Console.WriteLine($"TestAddition. Input string parameter: {addends}");
-
-            Calculator calc = new Calculator();
-            int actualResult = calc.Add(addends);
-
-            Assert.AreEqual(expectedResult, actualResult);
-        }
-
-        [DataTestMethod]
-        [DataRow("2,-3",true)]
-        [DataRow("2,3",false)]
-        [DataRow("2,3,,,5,-1,3",true)]
-        [DataRow("-1,",true)]
-        [DataRow(",",false)]
-        public void TestNegativeAddend(string addends, bool expectedResult)
-        {
-            Calculator calc = new Calculator();
-            bool actualResult = false;
-
-            try
+            Console.WriteLine($"TestAddition. Input string parameter: {opValues}");
+            
+            InputParameters inputParams = new InputParameters
             {
-                calc.Add(addends);
-            }
-            catch(ArgumentOutOfRangeException ex)
-            {
-                actualResult = true;
-            }
+                AllowNegativeNumbers = false,
+                CustomDelimiter = "",
+                UpperBound = 1000,
+                OperationValues = opValues
+            };
+            Calculator calc = new Calculator(inputParams);
+            int actualResult = calc.RunOperation(OperationType.Addition);
 
             Assert.AreEqual(expectedResult, actualResult);
         }
